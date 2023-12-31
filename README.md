@@ -10,12 +10,12 @@ Can add users to the bank. Each user has ID, cash (default 0), credit (default 0
 - POST https://bank-api-no1b.onrender.com/api/v1/bank and in body{"ID":"","cash":#,"credit":#}
 - Depositing
 Can deposit cash to a user. (by the user's ID and amount of cash) use:
-- PUT https://bank-api-no1b.onrender.com/api/v1/bank/depositCash/?id= &amount=
+- PUT https://bank-api-no1b.onrender.com/api/v1/bank/depositCash/?id=&amount=
 
 - Update credit
 Can update a user's credit (only positive numbers) Withdraw money Can withdraw money from
 the user (can withdraw money until the cash and credit run out) use:
-- PUT https://bank-api-no1b.onrender.com/api/v1/bank/updateCredit/?id= &newCredit=
+- PUT https://bank-api-no1b.onrender.com/api/v1/bank/updateCredit/?id=&newCredit=
 
 
 
