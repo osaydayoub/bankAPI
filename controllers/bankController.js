@@ -13,23 +13,25 @@ export const getAllUsers = async (req, res, next) => {
     }
 }
 
+
 //@des    filter the users ,return users with amount of cash more than cashMoreThan
-//@route  GET /api/v1/bank/filter/?cashMoreThan=#
-export const FilteredUsers = async (req, res, next) => {
-    // const cashMoreThan = Number(req.query.cashMoreThan);
-    res.send('filteredUsers');
-    // try {
-    //     if (cashMoreThan === undefined) {
-    //         res.status(STATUS_CODE.BAD_REQUEST)
-    //         throw new Error("query parameter (cashMoreThan) is required")
-    //     }
-    //     const users = readUsersFromFile();
-    //     const filteredUsers = users.filter(user => user.cash >= cashMoreThan);
-    //     console.log(filteredUsers)
-    //     res.send('filteredUsers');
-    // } catch (error) {
-    //     next(error)
-    // }
+//@route  GET /api/v1/bank/filter/moreThan/?chash=#
+///filter/moreThan/?chash=100
+export const filteredUsers = async (req, res, next) => {
+    const cashMoreThan = Number(req.query.cash);
+    // res.send('filteredUsers');
+    try {
+        if (cashMoreThan === undefined) {
+            res.status(STATUS_CODE.BAD_REQUEST)
+            throw new Error("query parameter (chash) is required")
+        }
+        const users = readUsersFromFile();
+        const filteredUsers = users.filter(user => user.cash >= cashMoreThan);
+        console.log(filteredUsers)
+        res.send(filteredUsers);
+    } catch (error) {
+        next(error)
+    }
 }
 
 //@des    get a single user
@@ -139,6 +141,7 @@ export const withdrawMoney = async (req, res, next) => {
         next(error)
     }
 }
+
 // transferMoney
 //@des    withdraw money from a user. (by the user's ID and amount of cash)
 //@route  Put /api/v1/bank/transferMoney?idFrom=&idTo=&amount=  query parameters(idFrom & idTo & amount)
@@ -187,10 +190,6 @@ export const transferMoney = async (req, res, next) => {
         next(error)
     }
 }
-
-
-
-
 
 //@des    update a user's credit (only positive numbers)
 //@route  Put /api/v1/bank/updateCredit/?id=&newCredit=  query parameter(id & newCredit)

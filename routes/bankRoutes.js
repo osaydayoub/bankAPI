@@ -1,5 +1,5 @@
 import express from "express";
-import { FilteredUsers, creatUser, deleteUser, depositCash, getAllUsers, getUserById, transferMoney, updateUserCredit, withdrawMoney } from "../controllers/bankController.js";
+import {creatUser, deleteUser, depositCash, filteredUsers, getAllUsers, getUserById, transferMoney, updateUserCredit, withdrawMoney } from "../controllers/bankController.js";
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get('/', getAllUsers)
 router.get('/:id', getUserById)
 
 //Route filter the users ,can fetch users by the amount of cash they have
-router.get('/filter', FilteredUsers)
+router.get('/filter/moreThan', filteredUsers)
 
 //Route to creat a new user
 router.post('/', creatUser)
@@ -26,7 +26,6 @@ router.put('/updateCredit', updateUserCredit)
 
 //Route transfer money from one user to another with credit
 router.put('/transferMoney', transferMoney)
-
 
 //Route to delete a user
 router.delete('/:id', deleteUser)

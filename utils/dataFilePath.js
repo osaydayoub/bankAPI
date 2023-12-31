@@ -1,2 +1,2 @@
 import path from 'path'
-export const filePath=path.join(path.resolve(),'data/bank.json')
+export const filePath='./data/bank.json'
